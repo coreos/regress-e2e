@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# set pwd to the directory that contains this script
+cd "${0%/*}"
+
+# checkout master and reset --hard
+git checkout master && git reset --hard
+
+# remove all untracked files
+git clean -fd --dry-run # show what is going to be deleted
+git clean -fd
+
