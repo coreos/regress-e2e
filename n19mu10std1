@@ -1,0 +1,27 @@
+#!/bin/sh
+
+values=( 8.27505 8.49708 8.875 8.999923025 9.0 9.0 10.0 10.0 10.0 10.0 10.0 10.0 10.0 11.0 11.0 11.000076975 11.125 11.50292 11.72495 )
+
+echo_test_pass() {
+    echo "--- PASS: TestOne ("${values[$1]}"s)"
+}
+
+increment_state() {
+    echo "$(($1 + 1))" > ./n19mu10std1.state
+}
+
+if [ ! -f "./n19mu10std1.state" ]; then
+    echo_test_pass 0
+    increment_state 0
+else
+    state="$(cat n19mu10std1.state)"
+    case $state in
+	[0-9]|1[0-8])
+	    echo_test_pass $state
+	    increment_state $state
+	    ;;
+	*)
+	    echo "Invalid state"
+	    exit 1 ;;
+    esac
+fi
