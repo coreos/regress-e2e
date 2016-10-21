@@ -1,5 +1,10 @@
 #!/bin/sh
 
+set -eo pipefail
+
+# set pwd to the directory that contains this script
+cd "${0%/*}"
+
 values=( 8.27505 8.49708 8.875 8.999923025 9.0 9.0 10.0 10.0 10.0 10.0 10.0 10.0 10.0 11.0 11.0 11.000076975 11.125 11.50292 11.72495 )
 
 echo_test_pass() {
