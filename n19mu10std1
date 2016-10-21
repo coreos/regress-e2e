@@ -5,21 +5,21 @@ set -eo pipefail
 # set pwd to the directory that contains this script
 cd "${0%/*}"
 
-values=( 8.27505 8.49708 8.875 8.999923025 9.0 9.0 10.0 10.0 10.0 10.0 10.0 10.0 10.0 11.0 11.0 11.000076975 11.125 11.50292 11.72495 )
+values=( 18.27505 18.49708 18.875 18.999923025 19.0 19.0 20.0 20.0 20.0 20.0 20.0 20.0 20.0 21.0 21.0 21.000076975 21.125 21.50292 21.72495 )
 
 echo_test_pass() {
     echo "--- PASS: TestOne ("${values[$1]}"s)"
 }
 
 increment_state() {
-    echo "$(($1 + 1))" > ./n19mu10std1.state
+    echo "$(($1 + 1))" > ./n19mu10std1_lt99.9.state
 }
 
-if [ ! -f "./n19mu10std1.state" ]; then
+if [ ! -f "./n19mu10std1_lt99.9.state" ]; then
     echo_test_pass 0
     increment_state 0
 else
-    state="$(cat n19mu10std1.state)"
+    state="$(cat n19mu10std1_lt99.9.state)"
     case $state in
 	[0-9]|1[0-8])
 	    echo_test_pass $state
